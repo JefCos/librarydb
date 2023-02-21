@@ -69,41 +69,64 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO book
-VALUES (1, "ISBN 987 234 234 234", "Krimi 1", "Dieter Bohlen", 5);
+VALUES (1, 'ISBN 987 234 234 234', 'Krimi 1', 'Dieter Bohlen', 5);
 
 INSERT INTO book
-VALUES (2, "ISBN 987 123 123 123", "Krimi 2", "Thoams Anders", 5);
+VALUES (2, 'ISBN 987 123 123 123', 'Krimi 2', 'Thoams Anders', 5);
 
 INSERT INTO book
-VALUES (3, "ISBN 987 567 567 567", "Krimi 3", "Helene Fischer", 5);
+VALUES (3, 'ISBN 987 567 567 567', 'Krimi 3', 'Helene Fischer', 5);
 
 INSERT INTO book
-VALUES (4, "ISBN 987 123 123 123", "Krimi 4", "DJ Bobo", 5);
+VALUES (4, 'ISBN 987 123 123 123', 'Krimi 4', 'DJ Bobo', 5);
 
 INSERT INTO book
-VALUES (5, "ISBN 987 789 789 789", "Krimi 5", "Justin Bieber", 5);
+VALUES (5, 'ISBN 987 789 789 789', 'Krimi 5', 'Justin Bieber', 5);
 
 INSERT INTO customer
-VALUES (1, "Wolfgang Peterson", 71);
+VALUES (1, 'Wolfgang Peterson', 71);
 
 INSERT INTO customer
-VALUES (2, "John Wick", 49);
+VALUES (2, 'John Wick', 49);
 
 INSERT INTO customer
-VALUES (3, "Sebastian Offergeld", 12);
+VALUES (3, 'Sebastian Offergeld', 12);
 
 INSERT INTO customer
-VALUES (4, "Peter Jackson", 67);
+VALUES (4, 'Peter Jackson', 67);
 
 INSERT INTO customer
-VALUES (5, "Hans Müller", 99);
+VALUES (5, 'Hans Müller', 99);
 
 INSERT INTO transaction
-VALUES (1, 1, "25.05.2023", 1);
+VALUES (1, 1, '2023-05-05', 1);
 
 DELETE FROM customer
 WHERE idcustomer = 5;
 
 UPDATE customer
-SET name = "Hans Meier", age= 98;
+SET name = 'Hans Meier', age= 98
 WHERE idcustomer = 1;
+-- queries, that update the transaction table to meet the new requirements
+ALTER TABLE transaction
+RENAME COLUMN date TO datestart;
+
+ALTER TABLE transaction
+ADD lentend DATE;
+
+UPDATE transaction
+SET lentend = '2023-05-10'
+WHERE idtransaction = 1;
+-- queries, that insert new data sets in the transaction table
+INSERT INTO transaction
+VALUES (2, 1, '2023-05-05', 2, '2023-05-10');
+
+INSERT INTO transaction
+VALUES (3, 1, '2023-05-05', 3, '2023-05-10');
+
+INSERT INTO transaction
+VALUES (4, 1, '2023-05-11', 4, '2023-05-16');
+-- query, that shows all book_idbook (book IDs) that a customer has lent at a given timeperiod
+SELECT *
+FROM transaction
+WHERE customer_idcustomer=1 && datestart> '2023-05-04' && lentend < '2023-05-11';
