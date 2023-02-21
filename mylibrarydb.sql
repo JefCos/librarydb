@@ -67,3 +67,36 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO book
+VALUES (1, "ISBN 987 234 234 234", "Krimi 1", "Dieter Bohlen", 5);
+
+INSERT INTO book
+VALUES (2, "ISBN 987 123 123 123", "Krimi 2", "Thoams Anders", 5);
+
+INSERT INTO book
+VALUES (3, "ISBN 987 567 567 567", "Krimi 3", "Helene Fischer", 5);
+
+INSERT INTO book
+VALUES (4, "ISBN 987 123 123 123", "Krimi 4", "DJ Bobo", 5);
+
+INSERT INTO book
+VALUES (5, "ISBN 987 789 789 789", "Krimi 5", "Justin Bieber", 5);
+
+INSERT INTO customer
+VALUES (1, "Wolfgang Peterson", 71);
+
+INSERT INTO customer
+VALUES (2, "John Wick", 49);
+
+INSERT INTO customer
+VALUES (3, "Sebastian Offergeld", 12);
+
+INSERT INTO customer
+VALUES (4, "Peter Jackson", 67);
+
+INSERT INTO customer
+VALUES (5, "Hans Müller", 99);
+
+INSERT INTO transaction
+VALUES (1, 1, "25.05.2023", 1);
