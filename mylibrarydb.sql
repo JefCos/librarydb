@@ -100,3 +100,10 @@ VALUES (5, "Hans Müller", 99);
 
 INSERT INTO transaction
 VALUES (1, 1, "25.05.2023", 1);
+
+DELETE FROM customer
+WHERE idcustomer = 5;
+
+UPDATE customer
+SET name = "Hans Meier", age= 98;
+WHERE idcustomer = 1;
